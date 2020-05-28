@@ -46,3 +46,65 @@ const clone = (obj: Object): Object => {
     return {...obj, isCopy: true}
 }
 console.log(clone({name: "Daniel", surname: "Mory"}))
+
+// Función merge
+const merge = (source: Object, target: Object): Object => {
+    return {...target, ...source }
+};
+const a ={name:"Maria", surname:"Ibañez", country:"SPA"};
+const b ={name:"Luisa", age:31, married:true};
+console.log(merge(a,b));
+
+// Función isBookRead
+interface Book {
+    title: string,
+    isRead: boolean
+}
+
+const books: Book[] =[{title:"Harry Potter y la piedra filosofal", isRead:true},{title:"Canción de hielo y fuego", isRead:false},{title:"Devastación", isRead:true},];
+
+function isBookRead (books: Book[], titleToSearch: string): boolean {
+    const book = books.filter(book => book.title === titleToSearch);
+    if (book.length === 0) {return false}
+    const [{isRead}] = book
+    return isRead
+}
+
+console.log("Funtion isBookRead: ")
+console.log(isBookRead(books, "Canción de hielo y fuego"))
+console.log(isBookRead(books, "Devastación"))
+console.log(isBookRead(books, "Los Pilares de la Tierra"))
+
+// Slot Machine
+class SlotMachine {
+    money: number;
+    constructor() {
+        this.money = 0;
+    }
+    play() {
+        this.money++
+        const slot1: Boolean = Boolean(Math.round(Math.random()));
+        const slot2: Boolean = Boolean(Math.round(Math.random()));
+        const slot3: Boolean = Boolean(Math.round(Math.random()));
+        if (slot1 === true && slot2 === true && slot3 === true) {
+            console.log(`Congratulations!!!. You won ${this.money} coins`);
+            this.money = 0;
+        }
+        else {
+            console.log("Good luck next time!!")
+        }
+    }
+}
+
+const machine1 = new SlotMachine();
+console.log("Slot Machine")
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();

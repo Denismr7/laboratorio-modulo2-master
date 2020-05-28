@@ -58,8 +58,60 @@ var superConcat = function (arr) {
     return arr;
 };
 superConcat([1, 2, 3], [4, 5, 6], [7, 8, 9]);
-// Función clone
+// Función clone que dado un objeto de entrada devuelva una copia del mismo
 var clone = function (obj) {
     return __assign(__assign({}, obj), { isCopy: true });
 };
 console.log(clone({ name: "Daniel", surname: "Mory" }));
+// Función merge
+var merge = function (source, target) {
+    return __assign(__assign({}, target), source);
+};
+var a = { name: "Maria", surname: "Ibañez", country: "SPA" };
+var b = { name: "Luisa", age: 31, married: true };
+console.log(merge(a, b));
+var books = [{ title: "Harry Potter y la piedra filosofal", isRead: true }, { title: "Canción de hielo y fuego", isRead: false }, { title: "Devastación", isRead: true },];
+function isBookRead(books, titleToSearch) {
+    var book = books.filter(function (book) { return book.title === titleToSearch; });
+    if (book.length === 0) {
+        return false;
+    }
+    var isRead = book[0].isRead;
+    return isRead;
+}
+console.log("Funtion isBookRead: ");
+console.log(isBookRead(books, "Canción de hielo y fuego"));
+console.log(isBookRead(books, "Devastación"));
+console.log(isBookRead(books, "Los Pilares de la Tierra"));
+// Slot Machine
+var SlotMachine = /** @class */ (function () {
+    function SlotMachine() {
+        this.money = 0;
+    }
+    SlotMachine.prototype.play = function () {
+        this.money++;
+        var slot1 = Boolean(Math.round(Math.random()));
+        var slot2 = Boolean(Math.round(Math.random()));
+        var slot3 = Boolean(Math.round(Math.random()));
+        if (slot1 === true && slot2 === true && slot3 === true) {
+            console.log("Congratulations!!!. You won " + this.money + " coins");
+            this.money = 0;
+        }
+        else {
+            console.log("Good luck next time!!");
+        }
+    };
+    return SlotMachine;
+}());
+var machine1 = new SlotMachine();
+console.log("Slot Machine");
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
