@@ -10,6 +10,7 @@ const tail = <T>(arr: T[]): T[] => {
     const [,...rest] = arr;
     return [...rest]
 };
+console.log("Function tail: ")
 console.log(tail([1,2,3,4,5]))
 
 // Implementa una función init (inmutable), tal que, dado un array como entradadevuelva todos los elementos menos el último.
@@ -18,18 +19,21 @@ const init = <T>(arr: T[]): T[] => {
     copy.pop()
     return copy
 };
+console.log("Function init:")
 console.log(init([1,2,3,4,5]))
 
 // Función last que devuelva el último elemento de un array
 const last = <T>(arr: T[]): T => {
     return arr[arr.length-1]
 }
+console.log("Function last:")
 console.log(last([1,2,3,4,5]))
 
 // Función concat que dado 2 arrays como entrada, devuelva la concatenación de ambos
 const concat = <T>(arr1: T[], arr2: T[]): T[] => {
     return arr1.concat(arr2);
 }
+console.log("Function concat: ")
 console.log(concat([1,2,3,4,5],[6,7,8,9,10]))
 
 // Función concat que acepte múltiples arrays de entrada
@@ -39,12 +43,14 @@ const superConcat = <T>(arr: T[], ...restArr: any[]): T[] => {
     }
     return arr
 }
-superConcat([1,2,3],[4,5,6],[7,8,9]);
+console.log("Function concat to receive multiple arrays: ");
+console.log(superConcat([1,2,3],[4,5,6],[7,8,9]));
 
 // Función clone que dado un objeto de entrada devuelva una copia del mismo
 const clone = (obj: Object): Object => {
     return {...obj, isCopy: true}
 }
+console.log("Function clone")
 console.log(clone({name: "Daniel", surname: "Mory"}))
 
 // Función merge
@@ -53,6 +59,7 @@ const merge = (source: Object, target: Object): Object => {
 };
 const a ={name:"Maria", surname:"Ibañez", country:"SPA"};
 const b ={name:"Luisa", age:31, married:true};
+console.log("Function merge");
 console.log(merge(a,b));
 
 // Función isBookRead
